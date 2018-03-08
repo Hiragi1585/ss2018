@@ -84,8 +84,6 @@ def receive(request):
         data.reply_token = db_param["reply_token"]
         data.save()
     
-    close_user = {}
     
-    data = LineUser.objects.order_by("-timestamp")[:10]
-    print(data.raw)
-    return HttpResponse("Data received")
+    print(data.reply_token)
+    return HttpResponse("%s" % data.reply_token)
