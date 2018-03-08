@@ -55,15 +55,9 @@
           <div class="list-group-item list-group-item-action text-white bg-dark">
             Event List
           </div>
-          <li href="#" class="list-group-item list-group-item-action">list1</li>
-          <li href="#" class="list-group-item list-group-item-action">list2</li>
-          <li href="#" class="list-group-item list-group-item-action">list3</li>
-          <li href="#" class="list-group-item list-group-item-action">list3</li>
-          <li href="#" class="list-group-item list-group-item-action">list4</li>
-          <li href="#" class="list-group-item list-group-item-action">list5</li>
-          <li href="#" class="list-group-item list-group-item-action">list6</li>
-          <li href="#" class="list-group-item list-group-item-action">list7</li>
-
+          {% for event in events %}
+            <li onclick="location.href='{% url 'detail' event.id %}'" class="list-group-item list-group-item-action">{{ event }}</li>
+          {% endfor %}
 
       </ul>
         {{ event_list }}
@@ -73,15 +67,10 @@
           <div class="list-group-item list-group-item-action text-white bg-dark">
             Organiser List
           </div>
-          <li href="#" class="list-group-item list-group-item-action">list1</li>
-          <li href="#" class="list-group-item list-group-item-action">list2</li>
-          <li href="#" class="list-group-item list-group-item-action">list3</li>
-          <li href="#" class="list-group-item list-group-item-action">list3</li>
-          <li href="#" class="list-group-item list-group-item-action">list4</li>
-          <li href="#" class="list-group-item list-group-item-action">list5</li>
-          <li href="#" class="list-group-item list-group-item-action">list6</li>
-          <li href="#" class="list-group-item list-group-item-action">list7</li>
-      </ul>
+          {% for user in users %}
+            <li onclick="location.href='{% url 'eventList' user.id %}'" class="list-group-item list-group-item-action">{{ user }}</li>
+          {% endfor %}
+        </ul>
         {{ organiser_list }}
       </div>
     </div>
@@ -109,7 +98,7 @@
                 <p class='col-6'>URL</p>
                 <input class="form-control" type='text'>
                 <p class='col-6'></p>
-                <input class="btn btn-outline-success my-2 my-sm-0" type='button' value='Register' onclick="location.href='myPage'">
+                <input class="btn btn-outline-success my-2 my-sm-0" type='button' value='Register' onclick="location.href='manage'">
               </form>
             </div>
         </div>
@@ -132,7 +121,7 @@
                 <p class='col-6'>User Pass</p>
                 <input class="form-control" type='password'>
                 <p class='col-6'></p>
-                <input class="btn btn-outline-success my-2 my-sm-0" type='button' value='Login' onclick="location.href='myPage'">
+                <input class="btn btn-outline-success my-2 my-sm-0" type='button' value='Login' onclick="location.href='manage/'">
               </form>
             </div>
         </div>

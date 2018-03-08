@@ -6,7 +6,9 @@ from .models import LineUser,Event,User
 # Create your views here.
 
 def index(request):
-    return render(request,"ss/index.html")
+    events = Event.objects.all()
+    users = User.objects.all()
+    return render(request,"ss/index.html",{"events":events,"users":users})
 
 
 def register(request):
@@ -23,6 +25,27 @@ def register(request):
     user.save()
     
     login(request)
+
+    
+def manage(request):
+    return render(request,"ss/manage.html")
+
+
+def event(request,user_id):
+    return HttpResponse("You're on event page.")
+
+
+def modify(request,user_id):
+    return HttpResponse("You're on modify page.")
+
+
+def detail(request,event_id):
+    return HttpResponse("You're on detail page about %d" % event_id)
+
+
+def eventList(request,user_id):
+    return HttpResponse("You're on eventList page of %s" % User.objects.get(id=user_id))
+
 
 def login(request):
     user_id = request.POST["user_id"]
