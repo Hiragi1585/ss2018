@@ -43,18 +43,22 @@ def receive(request):
         "timestamp":request.POST["timestamp"],
     }
     
-    data = LineUser()
-    data.line_id = db_param["user_id"]
-    data.hw_id = db_param["hw_id"]
-    data.timestamp = db_param["timestamp"]
+    data = LineUser.objects.filter(line_id=db_param["line_id"])
+    if str(data) == "<QuerySet []>":
+        print("Fatal to Find Query")
+        data = LineUser()
+        data.line_id = db_param["line_id"]
+        data.hw_id = db_param["hw_id"]
+        data.timestamp = db_param["timestamp"]
+        data.save()
+    else:
+        print("Find Query")
+        data = LineUser.objects.get(line_id=db_param["line_id"])
+        data.hw_id = db_param["hw_id"]
+        data.timestamp = db_param["timestamp"]
+        data.save()
     
-    data.save()
+    close_user = {}
     
-    print("DB_Inserted")
-    print(LineUser.objects.all())
-    
-    owner = User.objects.filter(beacon_id=db_param["hw_id"])
-    recent_event = Event.objects.filter(user=owner)
-    print(recent_event)
-    
+        
     return HttpResponse("Data received")
