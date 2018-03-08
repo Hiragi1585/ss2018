@@ -41,6 +41,7 @@ def receive(request):
         "line_id":request.POST["line_id"],
         "hw_id":request.POST["hw_id"],
         "timestamp":request.POST["timestamp"],
+        "reply_token":request.POST["reply_token"],
     }
     
     data = LineUser.objects.filter(line_id=db_param["line_id"])
@@ -50,15 +51,18 @@ def receive(request):
         data.line_id = db_param["line_id"]
         data.hw_id = db_param["hw_id"]
         data.timestamp = db_param["timestamp"]
+        data.reply_token = db_param["reply_token"]
         data.save()
     else:
         print("Find Query")
         data = LineUser.objects.get(line_id=db_param["line_id"])
         data.hw_id = db_param["hw_id"]
         data.timestamp = db_param["timestamp"]
+        data.reply_token = db_param["reply_token"]
         data.save()
     
     close_user = {}
     
-        
+    data = LineUser.objects.order_by("-timestamp")[:10]
+    print(data.raw)
     return HttpResponse("Data received")

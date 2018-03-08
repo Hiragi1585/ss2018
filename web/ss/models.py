@@ -29,6 +29,7 @@ class LineUser(models.Model):
     line_id = models.CharField(max_length=512)
     timestamp = models.CharField(max_length=512)
     hw_id = models.CharField(max_length=512)
+    reply_token = models.CharField(max_length=512,default = 2)
     def __str__(self):
-        return self.line_id
+        return self.line_id+":"+self.timestamp
     
