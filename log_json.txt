@@ -1,0 +1,1 @@
+Request body:{"events":[{"type":"message","replyToken":"600e1b81629a4fb4a01d3502bc2b2508","source":{"userId":"U198e183a2c0796ac99155a0302954600","type":"user"},"timestamp":1520490820484,"message":{"type":"text","id":"7589906043760","text":"n"}}]}
