@@ -3,34 +3,146 @@
 -->
 
 
-{% extends "ss/base.html" %}
+{% extends "base.html" %}
 
 <!-- 調整用CSS -->
 {% block css %}
   <style type='text/css'>
-    h1 {
-      /* display: none; */
-    }
-    .wobble {
-      /* 2秒かけて　アニメーションする */
-      animation-duration: 2s;
-
-    }
+  .container {
+    margin-top: 10px;
+  }
+  body {
+    background-color: #FBE158;
+  }
+  button {
+    margin: 3px;
+  }
+  ul {
+    box-shadow: 5px 5px 10px #000;
+  }
+  .title {
+    height: 300px;
+    background:#ddd url('https://skytm.sakura.ne.jp/back.png') no-repeat center center;
+  }
+  main {
+    height: 100%;
+  }
+  h1 {
+    font-size: 100px;
+  }
+  .modal-dialog {
+    margin-top: 200px;
+  }
   </style>
+
 {% endblock %}
 
 <!-- BODY -->
 {% block body %}
-  <h1 class='text-center animated wobble'>読み込み中</h1>
+<!-- Image and text -->
+<header class='container'>
+  <div class='row'>
+    <button type="button" class="btn btn-outline-dark btn-lg offset-9" data-toggle="modal" data-target="#modal-register">Register</button>
+    <button type="button" class="btn btn-outline-dark btn-lg" data-toggle="modal" data-target="#modal-login">Login</button>
+  </div>
+</header>
+<main class='title jumbotron'>
+  <h1 class='col-3 text-white'>EEYAN</h1>
+  <div class='contents container'>
+    <div class='row'>
+      <div class='list event_list col-5'>
+        <ul class="list-group">
+          <div class="list-group-item list-group-item-action text-white bg-dark">
+            Event List
+          </div>
+          <li href="#" class="list-group-item list-group-item-action">list1</li>
+          <li href="#" class="list-group-item list-group-item-action">list2</li>
+          <li href="#" class="list-group-item list-group-item-action">list3</li>
+          <li href="#" class="list-group-item list-group-item-action">list3</li>
+          <li href="#" class="list-group-item list-group-item-action">list4</li>
+          <li href="#" class="list-group-item list-group-item-action">list5</li>
+          <li href="#" class="list-group-item list-group-item-action">list6</li>
+          <li href="#" class="list-group-item list-group-item-action">list7</li>
+
+
+      </ul>
+        {{ event_list }}
+      </div>
+      <div class='list organiser_list offset-1 col-6'>
+        <ul class="list-group">
+          <div class="list-group-item list-group-item-action text-white bg-dark">
+            Organiser List
+          </div>
+          <li href="#" class="list-group-item list-group-item-action">list1</li>
+          <li href="#" class="list-group-item list-group-item-action">list2</li>
+          <li href="#" class="list-group-item list-group-item-action">list3</li>
+          <li href="#" class="list-group-item list-group-item-action">list3</li>
+          <li href="#" class="list-group-item list-group-item-action">list4</li>
+          <li href="#" class="list-group-item list-group-item-action">list5</li>
+          <li href="#" class="list-group-item list-group-item-action">list6</li>
+          <li href="#" class="list-group-item list-group-item-action">list7</li>
+      </ul>
+        {{ organiser_list }}
+      </div>
+    </div>
+  </div>
+</main>
+
+<div class="modal" id="modal-register" tabindex="-1">
+    <div class="modal-dialog">
+
+        <!-- 3.モーダルのコンテンツ -->
+        <div class="modal-content">
+            <!-- 4.モーダルのヘッダ -->
+            <div class="modal-header">
+                <h4 class="modal-title" id="modal-label">ユーザー登録</h4>
+            </div>
+            <!-- 5.モーダルのボディ -->
+            <div class="modal-body">
+              <form class="form-inline">
+                <p class='col-6'>User ID</p>
+                <input class="form-control" type="text">
+                <p class='col-6'>User Pass</p>
+                <input class="form-control" type='password'>
+                <p class='col-6'>Beacon ID</p>
+                <input class="form-control" type='text'>
+                <p class='col-6'>URL</p>
+                <input class="form-control" type='text'>
+                <p class='col-6'></p>
+                <input class="btn btn-outline-success my-2 my-sm-0" type='button' value='Register' onclick="location.href='myPage'">
+              </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal" id="modal-login" tabindex="-1">
+    <div class="modal-dialog">
+
+        <!-- 3.モーダルのコンテンツ -->
+        <div class="modal-content">
+            <!-- 4.モーダルのヘッダ -->
+            <div class="modal-header">
+                <h4 class="modal-title" id="modal-label">ログイン</h4>
+            </div>
+            <!-- 5.モーダルのボディ -->
+            <div class="modal-body">
+              <form class="form-inline">
+                <p class='col-6'>User ID</p>
+                <input class="form-control" type="text">
+                <p class='col-6'>User Pass</p>
+                <input class="form-control" type='password'>
+                <p class='col-6'></p>
+                <input class="btn btn-outline-success my-2 my-sm-0" type='button' value='Login' onclick="location.href='myPage'">
+              </form>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
 
 <!-- 調整用SCRIPT -->
 {% block script %}
   <script>
-    $(function() {
-      $('h1').fadeOut(3000, function() {
-        $('body').html('<h2>ようこそ</h2>');
-      });
-    });
+
   </script>
 {% endblock %}
