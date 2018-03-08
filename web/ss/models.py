@@ -25,3 +25,10 @@ class Event(models.Model):
         return self.title
 
 
+class Beacon(models.Model):
+    user_id = models.CharField(max_length=512)
+    timestamp = models.CharField(max_length=512)
+    hw_id = models.CharField(max_length=512)
+    def __str__(self):
+        return self.user_id
+    
