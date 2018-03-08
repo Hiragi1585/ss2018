@@ -5,9 +5,9 @@ from django.db import models
 
 class User(models.Model):
     user_id = models.CharField(max_length=64)
-    user_password = models.CharField(max_length=32)
+    password = models.CharField(max_length=32)
     beacon_id = models.CharField(max_length=10)
-    user_url = models.CharField(max_length=1024)
+    url = models.CharField(max_length=1024)
     def __str__(self):
         return self.user_id
 
@@ -25,10 +25,10 @@ class Event(models.Model):
         return self.title
 
 
-class Beacon(models.Model):
-    user_id = models.CharField(max_length=512)
+class LineUser(models.Model):
+    line_id = models.CharField(max_length=512)
     timestamp = models.CharField(max_length=512)
     hw_id = models.CharField(max_length=512)
     def __str__(self):
-        return self.user_id
+        return self.line_id
     
