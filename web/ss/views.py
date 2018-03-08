@@ -5,3 +5,7 @@ from django.shortcuts import render
 def index(request):
     return render(request,"ss/index.html")
 
+
+def register(request):
+    pass
+
