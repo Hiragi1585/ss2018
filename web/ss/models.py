@@ -23,4 +23,5 @@ class Event(models.Model):
     event_url = models.CharField(max_length=1024)
     def __str__(self):
         return self.title
-   
+
+
