@@ -28,8 +28,8 @@ def register(request):
     login(request)
 
     
-def manage(request):
-    return render(request,"ss/manage.html")
+def form(request):
+    return render(request,"ss/form.html")
 
 
 def event(request,user_id):

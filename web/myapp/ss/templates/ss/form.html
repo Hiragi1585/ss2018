@@ -1,0 +1,54 @@
+
+
+<!--
+"base.html" is including JQuery and Bootstrap
+-->
+
+
+{% extends "ss/base.html" %}
+
+<!-- 調整用CSS -->
+{% block css %}
+  <style type='text/css'>
+  body {
+
+    height: 300px;
+    background:#ddd url('https://skytm.sakura.ne.jp/back.png') no-repeat center center;
+  }
+.container {
+  background-color: #FBE158;
+  margin-top: 300px;
+  width: 500px;
+  background-color: white;
+  border-radius: 20px;
+  padding: 5px;
+}
+form {
+  margin-top: 30px;
+}
+  </style>
+
+{% endblock %}
+
+<!-- BODY -->
+{% block body %}
+<div class='container'>
+<div class='col'>
+<h1 class="modal-title" id="modal-label">作品　登録</h4>
+<form class="form-inline">
+  <p class='col-6'>チーム名</p>
+  <input class="form-control" type="text">
+  <p class='col-6'>作品　URL</p>
+  <input class="form-control" type='text'>
+  <p class='col-6'></p>
+  <input class="btn btn-outline-success my-2 my-sm-0" type='button' value='Register' onclick="location.href='#'">
+</form>
+</div>
+</div>
+{% endblock %}
+
+<!-- 調整用SCRIPT -->
+{% block script %}
+  <script>
+  </script>
+{% endblock %}
