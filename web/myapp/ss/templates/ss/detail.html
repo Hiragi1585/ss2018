@@ -1,0 +1,64 @@
+
+
+<!--
+"base.html" is including JQuery and Bootstrap
+-->
+
+
+{% extends "ss/base.html" %}
+
+<!-- 調整用CSS -->
+{% block css %}
+  <style type='text/css'>
+  body {
+
+    height: 300px;
+    background:#ddd url('https://skytm.sakura.ne.jp/back.png') no-repeat center center;
+  }
+  form {
+  background-color: #FBE158;
+  margin-top: 300px;
+  width: 500px;
+  background-color: white;
+  border-radius: 20px;
+  padding: 10px;
+  margin-left: 300px;
+}
+  </style>
+
+{% endblock %}
+
+<!-- BODY -->
+{% block body %}
+
+<form class="form-horizontal" style="margin:0 auto; margin-top:150px;">
+  <h1>作品　紹介</h1>
+  <div class="form-group">
+    <label for="inputEmail3" class="col-12 control-label">Team Name</label>
+    <div class="col-sm-10">
+      <p class="form-control-static text-right">{{ event.title }}</p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputEmail3" class="col-12 control-label">Team Member</label>
+    {% for user in users %}
+    <div class="col-sm-10">
+      <p class="form-control-static text-right">{{ user.user_name }}</p>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="form-group">
+    <label for="inputEmail3" class="col-12 control-label">Product URL</label>
+    <div class="col-sm-10">
+      <a href="{{ event.event_url}}"><p class="form-control-static text-right">{{ event.event_url }}</p></a>
+    </div>
+  </div>
+
+</form>
+{% endblock %}
+
+<!-- 調整用SCRIPT -->
+{% block script %}
+  <script>
+  </script>
+{% endblock %}

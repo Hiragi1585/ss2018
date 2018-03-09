@@ -42,8 +42,8 @@ def vote(request,event_id):
 
 def detail(request,event_id):
     event = Event.objects.get(id=event_id)
-    
-    return HttpResponse("You're on detail page about %d" % event_id)
+    users = LineUser.objects.filter(team=event)
+    return render(request,"ss/detail.html/",{"event":event,"users":users})
 
 
 def eventList(request,line_id):

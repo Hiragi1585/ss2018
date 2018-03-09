@@ -31,7 +31,8 @@ class LineUser(models.Model):
     hw_id = models.CharField(max_length=ln)
     reply_token = models.CharField(max_length=ln)
     freeday = models.DateTimeField()
-    eeyan = models.IntegerField(default=0)
+    eeyan = models.IntegerField(default=39)
+    team = models.ForeignKey(Event,on_delete=models.CASCADE,null=True)
     def __str__(self):
         return self.user_name
     
