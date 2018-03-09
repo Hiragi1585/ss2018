@@ -12,4 +12,3 @@ urlpatterns = [
     path("<int:user_id>/eventList/",views.eventList,name="eventList"),
     path("receive/",views.receive,name="receive"),
 ]
-    

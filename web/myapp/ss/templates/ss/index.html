@@ -8,9 +8,6 @@
 <!-- 調整用CSS -->
 {% block css %}
   <style type='text/css'>
-  .container {
-    margin-top: 10px;
-  }
   body {
     background-color: #FBE158;
   }
@@ -42,68 +39,52 @@
 <!-- Image and text -->
 <header class='container'>
   <div class='row'>
-    <button type="button" class="btn btn-outline-dark btn-lg offset-9" data-toggle="modal" data-target="#modal-register">Register</button>
-    <button type="button" class="btn btn-outline-dark btn-lg" data-toggle="modal" data-target="#modal-login">Login</button>
+    <button type="button" class="btn btn-outline-dark btn-lg offset-10" data-toggle="modal" data-target="#modal-login">Login for Provider</button>
   </div>
 </header>
 <main class='title jumbotron'>
   <h1 class='col-3 text-white'>EEYAN</h1>
   <div class='contents container'>
     <div class='row'>
-      <div class='list event_list col-5'>
+      <div class='list event_list col-6'>
         <ul class="list-group">
           <div class="list-group-item list-group-item-action text-white bg-dark">
-            Event List
+            <h2>最近の成果物</h2>
           </div>
           {% for event in events %}
-            <li onclick="location.href='{% url 'detail' event.id %}'" class="list-group-item list-group-item-action">{{ event }}</li>
+          <li class="list-group-item list-group-item-action container" >
+            <div class='row'>
+              <h3 class='col-10 center-block' onclick="location.href='{% url 'detail' event.id %}'">{{ event }}</h3>
+              <img class='eeyan' src='https://skytm.sakura.ne.jp/eeyan.png'>
+            </div>
+          </li>
           {% endfor %}
+
+
 
       </ul>
         {{ event_list }}
       </div>
-      <div class='list organiser_list offset-1 col-6'>
+      <div class='list organiser_list offset-1 col-5'>
         <ul class="list-group">
           <div class="list-group-item list-group-item-action text-white bg-dark">
-            Organiser List
+            <h2>ええやん　リスト</h2>
           </div>
-          {% for user in users %}
-            <li onclick="location.href='{% url 'eventList' user.id %}'" class="list-group-item list-group-item-action">{{ user }}</li>
+        {% for user in users %}
+          <li class="list-group-item list-group-item-action container" >
+            <div class='row'>
+              <h3 class='col-10 center-block' onclick="location.href='{% url 'eventList' user.id %}' ">{{ user }}</h3>
+            </div>
+          </li>
           {% endfor %}
         </ul>
-        {{ organiser_list }}
+
+
       </div>
     </div>
   </div>
 </main>
 
-<div class="modal" id="modal-register" tabindex="-1">
-    <div class="modal-dialog">
-
-        <!-- 3.モーダルのコンテンツ -->
-        <div class="modal-content">
-            <!-- 4.モーダルのヘッダ -->
-            <div class="modal-header">
-                <h4 class="modal-title" id="modal-label">ユーザー登録</h4>
-            </div>
-            <!-- 5.モーダルのボディ -->
-            <div class="modal-body">
-              <form class="form-inline">
-                <p class='col-6'>User ID</p>
-                <input class="form-control" type="text">
-                <p class='col-6'>User Pass</p>
-                <input class="form-control" type='password'>
-                <p class='col-6'>Beacon ID</p>
-                <input class="form-control" type='text'>
-                <p class='col-6'>URL</p>
-                <input class="form-control" type='text'>
-                <p class='col-6'></p>
-                <input class="btn btn-outline-success my-2 my-sm-0" type='button' value='Register' onclick="location.href='manage'">
-              </form>
-            </div>
-        </div>
-    </div>
-</div>
 <div class="modal" id="modal-login" tabindex="-1">
     <div class="modal-dialog">
 
@@ -132,6 +113,5 @@
 <!-- 調整用SCRIPT -->
 {% block script %}
   <script>
-
   </script>
 {% endblock %}

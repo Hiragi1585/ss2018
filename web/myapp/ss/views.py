@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.utils import timezone
 from .models import LineUser,Event,User
 
 
@@ -43,8 +44,8 @@ def detail(request,event_id):
     return HttpResponse("You're on detail page about %d" % event_id)
 
 
-def eventList(request,user_id):
-    return HttpResponse("You're on eventList page of %s" % User.objects.get(id=user_id))
+def eventList(request,line_id):
+    return HttpResponse("You're on eventList page of %s" % User.objects.get(id=line_id))
 
 
 def login(request):
@@ -61,6 +62,7 @@ def login(request):
 
 def receive(request):
     db_param = {
+        "user_name":request.POST["user_name"],
         "line_id":request.POST["line_id"],
         "hw_id":request.POST["hw_id"],
         "timestamp":request.POST["timestamp"],
@@ -72,20 +74,18 @@ def receive(request):
         print("Fatal to Find Query")
         data = LineUser()
         data.line_id = db_param["line_id"]
-        data.hw_id = db_param["hw_id"]
-        data.timestamp = db_param["timestamp"]
-        data.reply_token = db_param["reply_token"]
-        data.save()
+        data.user_name = db_param["user_name"]
     else:
         print("Find Query")
         data = LineUser.objects.get(line_id=db_param["line_id"])
-        data.hw_id = db_param["hw_id"]
-        data.timestamp = db_param["timestamp"]
-        data.reply_token = db_param["reply_token"]
-        data.save()
-    
+  
+    data.hw_id = db_param["hw_id"]
+    data.timestamp = db_param["timestamp"]
+    data.reply_token = db_param["reply_token"]
+#    data.freeday = timezone.now
+    data.freeday = "2018-03-15"
+    data.save()
     close_user = {}
     
-    data = LineUser.objects.order_by("-timestamp")[:10]
-    print(data.raw)
-    return HttpResponse("Data received")
+    
+    return HttpResponse(data.freeday)
