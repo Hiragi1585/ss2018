@@ -8,7 +8,7 @@ from .models import LineUser,Event,User
 
 def index(request):
     events = Event.objects.all()
-    users = LineUser.objects.all()
+    users = LineUser.objects.order_by("-eeyan")
     return render(request,"ss/index.html",{"events":events,"users":users})
 
 
@@ -36,11 +36,13 @@ def event(request,user_id):
     return HttpResponse("You're on event page.")
 
 
-def modify(request,user_id):
-    return HttpResponse("You're on modify page.")
+def vote(request,event_id):
+    return HttpResponse("You're on Voting page of event:%s")
 
 
 def detail(request,event_id):
+    event = Event.objects.get(id=event_id)
+    
     return HttpResponse("You're on detail page about %d" % event_id)
 
 

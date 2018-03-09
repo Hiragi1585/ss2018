@@ -30,6 +30,10 @@
   .modal-dialog {
     margin-top: 200px;
   }
+  img {
+    border:thin solid;
+    border-radius: 5px;
+  }
   </style>
 
 {% endblock %}
@@ -68,12 +72,14 @@
       <div class='list organiser_list offset-1 col-5'>
         <ul class="list-group">
           <div class="list-group-item list-group-item-action text-white bg-dark">
-            <h2>ええやん　リスト</h2>
+            <h2>ええやん ランキング</h2>
           </div>
         {% for user in users %}
           <li class="list-group-item list-group-item-action container" >
             <div class='row'>
-              <h3 class='col-10 center-block' onclick="location.href='{% url 'eventList' user.id %}' ">{{ user }}</h3>
+              <h3 class='col-10 center-block' onclick="location.href='{% url 'eventList' user.id %}' ">
+                {{ user }}</h3><h6 class="col-2">{{ user.eeyan }} EEYAN
+              </h6>
             </div>
           </li>
           {% endfor %}
