@@ -61,6 +61,7 @@ def login(request):
 
 
 def receive(request):
+    import json
     db_param = {
         "user_name":request.POST["user_name"],
         "line_id":request.POST["line_id"],
@@ -68,6 +69,8 @@ def receive(request):
         "timestamp":request.POST["timestamp"],
         "reply_token":request.POST["reply_token"],
     }
+    
+    jd = json.dumps(db_param)
     
     data = LineUser.objects.filter(line_id=db_param["line_id"])
     if str(data) == "<QuerySet []>":
@@ -87,5 +90,6 @@ def receive(request):
     data.save()
     close_user = {}
     
+    response = data.hw_id+"\n"+data.timestamp+"\n"+data.freeday
     
-    return HttpResponse(data.freeday)
+    return HttpResponse(jd)
