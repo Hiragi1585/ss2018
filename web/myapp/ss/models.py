@@ -32,7 +32,7 @@ class LineUser(models.Model):
     reply_token = models.CharField(max_length=ln)
     freeday = models.DateTimeField()
     def __str__(self):
-        return self.line_id+":"+self.timestamp
+        return self.user_name
     
     
 class log(models.Model):

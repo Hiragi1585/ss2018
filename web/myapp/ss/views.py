@@ -8,7 +8,7 @@ from .models import LineUser,Event,User
 
 def index(request):
     events = Event.objects.all()
-    users = User.objects.all()
+    users = LineUser.objects.all()
     return render(request,"ss/index.html",{"events":events,"users":users})
 
 
