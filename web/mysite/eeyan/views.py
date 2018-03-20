@@ -30,7 +30,7 @@ def login(request):
 
 def detail(request,event_id):
     event = Event.objects.get(id=event_id)
-    return HttpResponse("You're on detail page of %s" % event.name)
+    return render(request,"detail.html",{"event":event})
 
 
 def provider(request,user_id):

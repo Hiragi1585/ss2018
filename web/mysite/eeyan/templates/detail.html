@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<h2>Details of Event {{ event.name }}</h2>
+<p>Start at {{ event.start.month }}/{{ event.start.day }}</p>
+<p>Event discribe<br>
+{{event.discribe}}</p>
+{% endblock %}
+
+
